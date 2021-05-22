@@ -162,6 +162,12 @@ div .bg-y{
   background-color: rgb(158, 158, 147);
   color: white;
 }
+iframe{
+
+  width: 100%;
+  height: auto;
+  border: 0px;
+}
 .footer{
   background-color: #0E2431;
   color: #fff;
