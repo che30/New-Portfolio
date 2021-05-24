@@ -437,10 +437,13 @@ iframe {
 }
 
 @media (min-width: 567px) and (max-width: 769px) {
+  .s-4{
+    margin-top: 400px;
+  }
   .prev,
   .next {
-    top: 1400px;
-    color: #92977e;
+    top: 1850px;
+    color: green;
   }
 
   .next {
