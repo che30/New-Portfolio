@@ -422,16 +422,16 @@
 </section>
 <section class="my-5 s-6 ">
   <h2 class="text-center text-success" id="contact"><span class="abt-title">Contact Me</span></h2>
-  <form class="form-width mx-auto">
+  <form method="POST" class="form-width mx-auto">
     <div class="form-group">
-      <input type="email" class="form-control" id="exampleInputEmail"  placeholder="Enter Name">
+      <input type="email"  class="form-control" id="exampleName"  placeholder="Enter Name">
     </div>
     <div class="form-group">
-      <input type="email" class="form-control" id="exampleInputEmail1"  placeholder="Enter email">
+      <input type="email" class="form-control" id="exampleInputEmail"  placeholder="Enter email">
     </div>
     
     <div class="form-group">
-      <textarea class="form-control" placeholder="Enter Message" id="exampleFormControlTextarea1" rows="3"></textarea>
+      <textarea class="form-control" placeholder="Enter Message" id="exampleFormControlTextarea" rows="3"></textarea>
     </div>
     <button type="button" class="btn btn-success btn-form">Submit</button>
   </form>
@@ -449,7 +449,34 @@
     <p>&#169; che@blancoo58@gmail.com copyright all right reserved</p>
 </footer>
  
+<script src="https://smtpjs.com/v3/smtp.js"></script>
 <script >
+  let formBtn = document.querySelector('.btn-form')
+  
+  formBtn.addEventListener('click',(e)=>{
+    const senderName= document.getElementById('exampleName').value
+  const senderEmail= document.getElementById('exampleInputEmail').value
+  const msg = document.getElementById('exampleFormControlTextarea').value
+  document.querySelector('.form-width').reset()
+  senderEmailTo(senderName,senderEmail,msg)
+    e.preventDefault()
+
+  })
+function senderEmailTo(senderName,senderEmail,msg){
+  Email.send({
+        Host: "smtp.gmail.com",
+        Username: "che.blancoo58@gmail.com",
+        Password: "ilhqzddckzcafase",
+        To: 'che.blancoo58@gmail.com',
+        From: "che.blancoo58@gmail.com",
+        Subject: `${senderName} sent you a message`,
+        Body: `Name: ${senderName} <br> Email: ${senderEmail}<br> Message: ${msg}`,
+      })
+        .then((message)=> {
+          alert("mail sent successfully")
+        });
+
+}
   var slideIndex = [1,1];
 var slideId = ["mySlides1"]
 showSlides(1, 0);
@@ -472,7 +499,6 @@ function showSlides(n, no) {
  x[slideIndex[no]-1].style.display = "block";  
 }
  </script>
-
 
   <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
   <script src="/assets/js/index.js"></script>
